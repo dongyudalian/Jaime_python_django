@@ -29,6 +29,7 @@ router.register(r'456', api.GroupViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.index,name='home'),
+    path('add_edition/', views.add_edition,name='add_edition'),
     path('login/', login.login),
     path('logout/', login.logout,name='logout'),
     path('register/', login.register),
