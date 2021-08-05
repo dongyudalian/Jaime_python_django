@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/test.css">
+    <title>add_edition</title>
+</head>
+<body>
+    <h2 style="text-align: center; margin-top: 30px;">This add_edition Page</a></h2>
+    <div style="text-align:center; font-size: 20px; margin-top: 30px;">
+    {%if user.is_authenticated%}
+        <p><input type="button" class="btn btn-primary" value="HomePage" onclick="location.href = 'http://127.0.0.1:8000/home/'"></p>
+        <p>Dear : {{ User_name }}</p>
+        {% if add_successful %}
+            <p> New Special_edition add successfully ！</p>
+        {% endif %}
+    {% else %}
+        <p> 赶紧登录！！！ </p>
+        <p><input type="button" class="btn btn-primary" value="HomePage" onclick="location.href = 'http://127.0.0.1:8000/home/'"></p>
+    {% endif %}
+    <img src="{% static "images/jay.png" %}" alt="Jay">
+    </div>
+    <div style="text-align:center; font-size: 20px; margin-top: 30px;">
+    <form action="/add_edition/" method="post">
+        {% csrf_token %}
+        <p>输入你喜欢的专辑名字：</p>
+        <input type="text" name="edition_name">
+        <p  style="margin-top: 30px;">输入你喜欢的专辑概要：</p>
+        <input type="text" name="edition_info">
+        <input type="hidden" name="user_id" value="{{ User_id }}">
+        <p><button type="submit" class="btn btn-primary" style="margin-top: 30px;">提交</button></p>
+    </form>
+    </div>
+</body>
+</html>

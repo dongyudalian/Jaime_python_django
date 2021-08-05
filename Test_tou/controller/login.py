@@ -15,9 +15,6 @@ def login(request):
     name = request.POST.get('name')
     password = request.POST.get('password')
     User_info = auth.authenticate(username=name, password=password)
-    print(name)
-    print(password)
-    print(User_info)
     if not User_info:
         form.add_error("password", " Your name and password didn't match. Please try again.")
         return render(request, 'login.html', {'form': form})

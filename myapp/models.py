@@ -31,3 +31,16 @@ class User(AbstractUser):
 
     def __str__(self):  # 这个__str__方法的作用将在查询时看到
         return f'User<id={self.id},username={self.username},email={self.email}'
+
+
+class Special_edition(models.Model):
+    Edname = models.CharField(max_length = 255 )
+    Edinfo = models.CharField(max_length = 255 )
+    created_time = models.DateTimeField(null=True)
+    user_id = models.ForeignKey( to= User ,on_delete=models.CASCADE,db_column='user_id')
+
+    class Meta:
+        db_table = "special_edition"
+
+    def __str__(self):
+        return self.Edname
