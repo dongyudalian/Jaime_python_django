@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/test.css">
+    <title>Runoob</title>
+</head>
+<body>
+    <h2 style="text-align: center; margin-top: 30px;">This web for JAY</a></h2>
+    <div style="text-align:center; font-size: 20px; margin-top: 30px;">
+    <img src="{% static "images/jay.png" %}" alt="Jay">
+    </div>
+    {%if user.is_authenticated%}
+        <form action="/logout/" method="post">
+        {% csrf_token %}
+        <div style="text-align:center; font-size: 20px; margin-top: 30px;">
+            <input type="hidden" name="id">
+            <p> Dear : {{ User_name }}</p>
+            <p><button type="submit" class="btn btn-primary">LOGOUT</button></p>
+        </div>
+        </form>
+    {% else %}
+        {% if register_successful %}
+            <p style="text-align: center; margin-top: 30px;"> New account application successfully ！</p>  
+        {% endif %}
+        {% if logout_successful %}
+            <p style="text-align: center; font-size: 20px; margin-top: 30px;"> Logout successfully ！</p>  
+        {% endif %}
+        <p style="text-align: center; margin-top: 30px;"><input type="button" class="btn btn-primary" value="LOGIN" onclick="location.href = 'http://127.0.0.1:8000/login/'"></p>
+    {% endif %}
+</body>
+</html>

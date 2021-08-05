@@ -1,0 +1,13 @@
+.mydiv{
+    background-color: yellowgreen;
+    text-align:center;
+}
+
+label > input {
+    display:none; /* アップロードボタンのスタイルを無効にする */
+    }
+label {
+    color: #b13774; /* ラベルテキストの色を指定する */
+    padding: 10px; /* ラベルとテキスト間の余白を指定する */
+    border: double 2px #AAAAAA;/* ラベルのボーダーを指定する */
+}

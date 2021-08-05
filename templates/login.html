@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/css/test.css">
+        <title>Login</title>
+        <style type="text/css">
+            ul.errorlist {list-style:none;}
+        </style>
+    </head>
+<body>
+    <div class="mydiv">
+    <h2 style="text-align: center; margin-top: 40px;">If you are also a Jay fan, pls login your fan's account</a></h2>
+    </div>
+    <form action="/login/" method="post" autocomplete='off'>
+    {% csrf_token %}
+    <div style="text-align:center; font-size: 20px; margin-top: 80px;">
+        <span style="color: red">{{ form.mis_login.errors }}</span>
+        <p><input type="button" class="btn btn-primary" value="HomePage" onclick="location.href = 'http://127.0.0.1:8000/home/'"></p>  
+        <p style="margin-block :auto;">
+            {{ form.name.label }}
+        </p>
+        <p style="margin-block :auto;">
+            {{ form.name }}
+        </p>         
+        <span style="color: red">{{ form.name.errors }}</span>
+        <p style="margin-block :auto;margin-top: 20px;">
+            {{ form.password.label }}
+        </p>
+        <p style="margin-block :auto;">
+            {{ form.password }}
+        </p>
+        <span style="color: red">{{ form.password.errors }}</span>
+        <p><button type="submit" class="btn btn-primary" style="margin-right: 20px; margin-top: 20px;">LOGIN</button>
+            <input type="button" class="btn btn-primary" style="margin-top: 20px;" value="REGISTER" onclick="location.href = 'http://127.0.0.1:8000/register/'">
+        </p>
+    </div>
+    </form>
+</body>
+</html>
