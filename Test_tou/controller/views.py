@@ -43,3 +43,14 @@ def add_edition(request):
     add_successful = 1
     rep.set_cookie("add_successful", add_successful )
     return rep
+
+def my_favorite(request):
+    if request.method == 'GET':
+        User_id = request.COOKIES.get('User_id')
+        user_info = User.objects.get(id = User_id)
+        ed_info = Special_edition.objects.filter(user_id =user_info)
+        return render(request, "my_favorite.html",{'ed_info':ed_info})
+    edition_id = request.POST.get('edition_id')
+    Special_edition.objects.filter(id = edition_id).delete()
+    rep = redirect("/my_favorite/")
+    return rep
