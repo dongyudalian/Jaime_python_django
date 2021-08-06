@@ -31,6 +31,7 @@ urlpatterns = [
     path('home/', views.index,name='home'),
     path('add_edition/', views.add_edition,name='add_edition'),
     path('my_favorite/', views.my_favorite,name='my_favorite'),
+    path('change_edition/', views.change_edition,name='change_edition'),
     path('login/', login.login),
     path('logout/', login.logout,name='logout'),
     path('register/', login.register),

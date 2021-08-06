@@ -49,8 +49,33 @@ def my_favorite(request):
         User_id = request.COOKIES.get('User_id')
         user_info = User.objects.get(id = User_id)
         ed_info = Special_edition.objects.filter(user_id =user_info)
-        return render(request, "my_favorite.html",{'ed_info':ed_info})
+        change_successful = request.COOKIES.get('change_successful')
+        rep = render(request, "my_favorite.html",{'ed_info':ed_info,'change_successful':change_successful})
+        rep.delete_cookie("change_successful")
+        return rep
     edition_id = request.POST.get('edition_id')
     Special_edition.objects.filter(id = edition_id).delete()
     rep = redirect("/my_favorite/")
+    return rep
+
+def change_edition(request):
+    if request.method == 'GET':
+        edition_id = request.GET.get('edition_id')
+        if edition_id is None:
+            return redirect("/my_favorite/")
+        ed_info = Special_edition.objects.filter(id =edition_id)
+        return render(request, "change_edition.html",{'ed_info':ed_info})
+    edition_id = request.POST.get('edition_id')
+    edition_name = request.POST.get('edition_name')
+    edition_info = request.POST.get('edition_info')
+    import datetime
+    import time
+    created_time = datetime.datetime.now()
+    created_time = created_time.strftime('%Y-%m-%d %H:%M:%S')
+    created_time = datetime.datetime.strptime(created_time, '%Y-%m-%d %H:%M:%S')
+    Special_edition.objects.filter(id =edition_id).update(Edname = edition_name, Edinfo = edition_info,created_time = created_time)
+    ed_info = Special_edition.objects.filter(id =edition_id)
+    rep = redirect("/my_favorite/")
+    change_successful = 1
+    rep.set_cookie("change_successful", change_successful )
     return rep
