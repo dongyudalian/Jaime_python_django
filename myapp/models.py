@@ -43,4 +43,4 @@ class Special_edition(models.Model):
         db_table = "special_edition"
 
     def __str__(self):
-        return f'Edname={self.Edname},Edinfo={self.Edinfo},created_time={self.created_time},user_id={self.user_id.id}'
+        return f'id={self.id},Edname={self.Edname},Edinfo={self.Edinfo},created_time={self.created_time},user_id={self.user_id.id}'

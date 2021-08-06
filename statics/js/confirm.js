@@ -7,3 +7,12 @@ function deleteJob()
             return false;
         }
 }
+function changeJob()
+{
+        if(confirm("确定要更改吗?"))
+        {
+            return true;
+        }else{
+            return false;
+        }
+}

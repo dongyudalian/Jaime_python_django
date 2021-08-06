@@ -40,6 +40,14 @@ table.gridtable {
         font-weight: bold;
         background-color: #ffe493;
     }
+    table.gridtable th.info_now {
+        font-weight: bold;
+        background-color: #ffe493;
+    }
+    table.gridtable th.info_now_td {
+        font-weight: bold;
+        background-color: #ffd3d352;
+    }
     table.gridtable td.info_td {
         font-weight: bold;
         background-color: #ffe493;
