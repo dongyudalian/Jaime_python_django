@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.index,name='home'),
     path('add_edition/', views.add_edition,name='add_edition'),
+    path('my_favorite/', views.my_favorite,name='my_favorite'),
     path('login/', login.login),
     path('logout/', login.logout,name='logout'),
     path('register/', login.register),

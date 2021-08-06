@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="{% static "js/confirm.js"%}" type="text/javascript" language="JavaScript"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/test.css">
+    <title>Runoob</title>
+</head>
+<body>
+    <h2 style="text-align: center; margin-top: 30px;">This my_favorite Page</a></h2>
+    <center>
+    <div style="text-align:center; font-size: 20px; margin-top: 30px;">
+        <img src="{% static "images/jay.png" %}" alt="Jay">
+    </div>
+    <table class="gridtable">
+        <tr>
+            <th class="ed_name">专辑名</th>
+            {% for i in ed_info %}
+            <th>{{i.Edname}}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="info_td">我写的简介</td>
+            {% for i in ed_info %}
+            <td>{{i.Edinfo}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="user_td">您的名字</td>
+            {% for i in ed_info %}
+            <td>{{i.user_id.username}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td class="ed_operation">删除这条</td>
+            {% for i in ed_info %}
+            <form action="/my_favorite/" method="post">
+            {% csrf_token %}
+            <td><input type="hidden" name="edition_id" value="{{i.id}}">
+            <button type="submit" onclick="return deleteJob();">Delete</button></td>
+            </form>
+            {% endfor %}
+        </tr>
+    </table>
+    <p><input type="button" style="margin-top: 30px;" class="btn btn-primary" value="BackHomePage" onclick="location.href = 'http://127.0.0.1:8000/home/'"></p>
+    </center>
+</body>
+</html>
