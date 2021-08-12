@@ -31,6 +31,8 @@ urlpatterns = [
     path('home/', views.index,name='home'),
     path('add_edition/', views.add_edition,name='add_edition'),
     path('my_favorite/', views.my_favorite,name='my_favorite'),
+    path('other_favorite_page/', views.other_favorite_page,name='other_favorite_page'),
+    path('other_favorite_ajax/', views.other_favorite_ajax,name='other_favorite_ajax'),
     path('change_edition/', views.change_edition,name='change_edition'),
     path('login/', login.login),
     path('logout/', login.logout,name='logout'),

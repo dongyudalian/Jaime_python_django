@@ -79,3 +79,28 @@ def change_edition(request):
     change_successful = 1
     rep.set_cookie("change_successful", change_successful )
     return rep
+
+def other_favorite_page(request):
+    User_id = request.COOKIES.get('User_id')
+    other_user = User.objects.exclude(id = User_id)
+    return render(request,"other_favorite_page.html",{'other_user':other_user})
+
+def other_favorite_ajax(request):
+    select_val = request.GET.get('var1')
+    other_user = User.objects.get(id = select_val)
+    ed_info = Special_edition.objects.filter(user_id =other_user.id)
+    print(ed_info)
+    A1 = '<center><table class="gridtable"><tr><th class="ed_name">专辑名</th>'
+    A2 = ''
+    for item in ed_info:
+        A2 += '<th>'+item.Edname+'</th>'
+    A3 ='</tr><tr><td class="info_td">ta写的简介</td>'
+    A4 = ''
+    for item in ed_info:
+        A4 +='<td>'+item.Edinfo+'</td>'
+    A5 = '</tr><tr><td class="user_td">ta的名字</td>'
+    A6 = ''
+    for item in ed_info:
+        A6 += '<td>'+item.user_id.username+'</td>'
+    A7 = '</tr></table></center>'
+    return HttpResponse(A1+A2+A3+A4+A5+A6+A7)
